@@ -9,16 +9,6 @@ from dotenv import load_dotenv
 # Using fitz to read through the PDFs.
 import fitz 
 
-# Loading the environment variables.
-load_dotenv()
-# Try secrets first (Streamlit Cloud), then .env (local)
-api_key = st.secrets.get("COHERE_API_KEY") or os.getenv("COHERE_API_KEY") or os.getenv("CO_API_KEY")
-
-if not api_key:
-    st.error("⚠️ Missing Cohere API key. Please set it in Streamlit secrets or .env file.")
-    st.stop()
-
-co = cohere.Client(api_key)
 # Configurating the webpage with title.
 st.set_page_config(page_title="📄 Talk to PDF AI", page_icon="🤖", layout="centered")
 # Alligning the title in the middle.
